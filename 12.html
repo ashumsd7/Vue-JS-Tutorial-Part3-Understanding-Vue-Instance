@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>The VUe JS Instance LifeCycle</title>
+</head>
+
+<body>
+    <div id="app">
+        {{ title}}
+    <!--  after clicking destroy vue instance will be gone and no longer available -->
+        <!--  no data lost but it removes all logic and all connections are dead now -->
+    <button @click="changeTitle">Update Title</button>
+    <button @click="destroy">Destroy</button>
+</div>
+
+    <script>
+
+        new Vue({
+            el: "#app",
+            data: {
+                title: "The vue JS Instance"
+            },
+            methods: {
+
+                destroy: function () {
+                    this.$destroy();
+                },
+                changeTitle: function () {
+                    this.title = "I am changed"
+                }
+            },
+
+
+
+
+
+
+            beforeCreate: function () {
+
+                console.log("beforeCreate();");
+            },
+
+            created: function () {
+                console.log("craeted();");
+            },
+
+            beforeMount: function () {
+                console.log("beforeMount();");
+
+            },
+
+            //we can see in browesers now
+            mounted: function () {
+                console.log("mounted():");
+            },
+
+            beforeUpdate: function () {
+
+                console.log("beforeUpdate();");
+            },
+            updated: function () {
+                console.log("updated();");
+            },
+
+            beforeDestroy: function () {
+                console.log("beforeDestroy();");
+
+            },
+            destroyed: function () {
+                console.log("destroyed();");
+            }
+
+
+
+
+
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <title>Using Components : Again try to u/s</title>
+</head>
+<body>
+<div id="app">
+
+    {{ title}}
+
+    <hello></hello>
+    <hello></hello>
+
+<xx></xx>
+<xx></xx>
+
+ 
+</div>
+   
+<script>
+var vt=Vue.component("hello",{
+
+    template: `<h1> I am a reusable component Thanks Vue.js</h1>`
+});
+
+Vue.component("xx",{
+
+template: `<h1> Ind vs NZ Test </h1>`
+})
+
+new Vue({
+    el: "#app",
+    data: {
+        title: "namate"
+    }
+})
+
+
+</script>
+</body>
+
+</html>

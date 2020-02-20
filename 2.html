@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Instances of vue</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+</head>
+
+<!-- READ IT AFTER U?Sing FULL CODE
+
+    We can make two vue instances
+    in this code " title " is related to their own instance
+    there is no relation b/w them
+-->
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <button v-on:click="show">Show Paragraph</button>
+        <p v-if="showParagraph">Thos is not always visible</p>
+    </div>
+<!--  creating new div with different ID -->
+    <div id="app2">
+        <h1>{{title}}</h1>
+        <button v-on:click="show">Show Paragraph</button>
+        <p v-if="showParagraph">Thos is not always visible</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                title: "The VueJS Instance",
+                showParagraph: false
+            },
+            methods: {
+                show: function () {
+                    this.showParagraph = true;
+                    this.updateTitle(" The Vue Js Instance (Updated");
+                },
+                updateTitle: function (title) {
+                    this.title = title;
+                }
+            },
+            computed: {
+                lowercaseTitle: function () {
+                    return this.title.toLowerCase();
+                }
+            },
+            watch: {
+                title: function (value) {
+                    alert("Title Changed, new Value" + value);
+                }
+            }
+        })
+
+        // Now We are going to craete new Vue instance 
+
+        new Vue({
+            el: "#app2",
+            data:{
+                title: "The second Instance"
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>

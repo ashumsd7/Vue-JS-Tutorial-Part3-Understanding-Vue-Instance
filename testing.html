@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+
+        <p>{{text }}</p>
+
+        <hello></hello>
+        <hello></hello>
+        <hello></hello>
+        <hello></hello>
+
+
+        <aasim></aasim>
+      
+    </div>
+
+    <script>
+var neww = Vue.component('hello',{
+
+template: `<h1> hey asim wht are yucdefd </h1>`
+
+})
+
+var neww = Vue.component('aasim',{
+
+template: `<marquee > fdfdtgfddddd </marquee>`
+
+})
+
+
+
+
+
+
+var vm= new Vue({
+
+el: '#app',
+data:{ text: "Assimashu"}
+
+})
+
+    </script>
+</body>
+</html>

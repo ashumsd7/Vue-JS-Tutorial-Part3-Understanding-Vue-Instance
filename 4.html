@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js manages Data and methods</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+</head>
+
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <button v-on:click="show">Show Paragraph</button>
+        <p v-if="showParagraph">This is not always visible</p>
+    </div>
+<!--  creating new div with different ID -->
+    <div id="app2">
+        <h1>{{title}}</h1>
+        <button v-on:click="onChange">Change Something in vue 1</button>
+       
+    </div>
+
+    <script>
+
+
+     var vm1=   new Vue({
+            el: "#app",
+            data: {
+                title: "The VueJS Instance",
+                showParagraph: false
+            },
+            methods: {
+                show: function () {
+                    this.showParagraph = true;
+                    this.updateTitle(" The Vue Js Instance (Updated");
+                },
+                updateTitle: function (title) {
+                    this.title = title;
+                }
+            },
+            computed: {
+                lowercaseTitle: function () {
+                    return this.title.toLowerCase();
+                }
+            },
+            watch: {
+                title: function (value) {
+                    alert("Title Changed, new Value" + value);
+                }
+            }
+        })
+
+
+setTimeout(function(){
+    vm2.title= " I am chnaged by Noramal JS code ( Set time Out)"
+        vm1.show();
+},2000)
+
+vm1.newprop= "hey";
+console.log(vm1);
+
+
+
+      
+    var vm2=    new Vue({
+            el: "#app2",
+            data:{
+                title: "The second Instance"
+            },
+            methods:{
+                onChange : function(){
+                        vm1.title= "Hey I am chnaged by vm2"
+                }
+            }
+
+        })
+
+
+/*------------------------------------
+We are able to access properties outside of the vue, but we are
+not able to change or craete the properties outside of the vue code
+
+you can do like this:
+vm1.newProp= "New";   // but u can't use this in nvue instance // it is notreactive
+
+
+inspect this code : u will see many thing or follow video
+//-----------------------------------*/
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

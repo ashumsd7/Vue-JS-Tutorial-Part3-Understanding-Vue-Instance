@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <title>refs</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <p ref="chnageText">{{text}}</p>
+    </div>
+
+
+    <script>
+    var vm= new Vue({
+        el: "#app",
+        data:{
+            text: "Ashutosh"
+        }
+    })
+    //this is way if u want to handle html code out side of vue instance and inside as well
+
+// this will  overwritten if u chnage somthing in it after 2 or 3 seconds that will be affected bhere
+
+//
+    vm.$refs.chnageText.innerText= "Tiwari";
+
+
+/*------------------------------------
+vue
+//-----------------------------------*/
+
+    </script>
+</body>
+
+</html>

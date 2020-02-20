@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <title>Mounting a template</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <p ref="chnageText">{{text}}</p>
+    </div>
+    
+    <div id="app3">
+
+
+    </div>
+
+    <script>
+    var vm= new Vue({
+        //whatif we dont write el: #app here so there is way called munting the templates
+     
+        data:{
+            text: "Ashutosh"
+        }
+    })
+  
+
+    //this is the way we use $mount() method
+    vm.$mount("#app");
+
+    vm.$refs.chnageText.innerText= "Tiwari";
+
+
+var vm3= new Vue({
+//introducing new property template
+//we can create our own template here and display in DOM
+template: `<h1> Hello!!</h1>`  // u cant write multiple lines
+
+})
+
+//vueInstance.....mount method ( #.  selector)
+// vm3.$mount("#app3")
+
+//or do this with the help of vanilla JS
+
+vm3.$mount();
+document.getElementById("app3").appendChild(vm3.$el);
+
+/*------------------------------------
+
+//-----------------------------------*/
+
+    </script>
+</body>
+
+</html>

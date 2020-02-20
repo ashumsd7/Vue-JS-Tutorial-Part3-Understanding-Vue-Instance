@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <title>Using Components</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <p ref="chnageText">{{text}}</p>
+<!-- now if you wan to use that component which is craeted using Vue.component -->
+        <hello></hello>
+        <hello></hello>
+        <hello></hello>
+
+    </div>
+    
+    <div id="app3">
+
+
+    </div>
+
+
+   
+
+    <script>
+
+//vue Component alllows us to make a new component we can re-use it
+     //vue.Component("selector",JS Object pass or create here)
+        Vue.component('hello',{
+            template: `<h2>hello i am a reusable component</h2>`
+
+
+        });
+
+
+
+
+    var vm= new Vue({
+        //whatif we dont write el: #app here so there is way called munting the templates
+     
+        data:{
+            text: "Ashutosh"
+        }
+    })
+  
+
+    //this is the way we use $mount() method
+    vm.$mount("#app");
+
+    vm.$refs.chnageText.innerText= "Tiwari";
+
+
+var vm3= new Vue({
+    //we want to replace templates of every hello elements
+//  el: ".hello",
+//now think if it is a template and u want to show at many places then there is way in vue js
+template: `<h1> Hello!!</h1>`  
+
+})
+
+vm3.$mount("#app3")
+
+
+    </script>
+</body>
+
+</html>

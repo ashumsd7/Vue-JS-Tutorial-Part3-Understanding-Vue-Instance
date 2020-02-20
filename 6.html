@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placing $ref and using them on ur templates</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+</head>
+
+<!--  See second example=??7.html to u/s refs -->
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <!-- we r talikng about ref , need not to add colon -->
+        <button v-on:click="show" ref="myButton">Show Paragraph</button>
+        <p v-if="showParagraph">This is not always visible</p>
+    </div>
+<!--  creating new div with different ID -->
+    <div id="app2">
+        <!--  ref is being used to access text inside this h1 -->
+        <h1 refs="heading">{{title}}</h1>
+        <button v-on:click="onChange">Change Something in vue 1</button>
+       
+    </div>
+
+    <script>
+
+
+     var vm1=   new Vue({
+            el: "#app",
+            data: {
+                title: "The VueJS Instance",
+                showParagraph: false
+            },
+            methods: {
+                show: function () {
+                    this.showParagraph = true;
+                    this.updateTitle(" The Vue Js Instance (Updated");
+                    // console.log(this.$refs.myButton);
+
+                    //accessing html element
+                    //we are also able to chnage or rename the text of button
+                    this.$refs.myButton.innerText= "test";
+                },
+                updateTitle: function (title) {
+                    this.title = title;
+                }
+            },
+            computed: {
+                lowercaseTitle: function () {
+                    return this.title.toLowerCase();
+                }
+            },
+            watch: {
+                title: function (value) {
+                    alert("Title Changed, new Value" + value);
+                }
+            }
+        });
+
+
+setTimeout(function(){
+    vm2.title= " I am chnaged by Noramal JS code ( Set time Out)"
+        vm1.show();
+        vm1.$refs.heading.innerText= "ASHUTOSH ";
+},2000)
+
+vm1.newprop= "hey";
+console.log(vm1);
+
+
+
+
+
+
+      
+    var vm2=    new Vue({
+            el: "#app2",
+            data:{
+                title: "The second Instance"
+            },
+            methods:{
+                onChange : function(){
+                        vm1.title= "Hey I am chnaged by vm2"
+                }
+            }
+
+        })
+
+
+/*------------------------------------
+
+//-----------------------------------*/
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
